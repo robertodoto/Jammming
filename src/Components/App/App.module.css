@@ -1,0 +1,49 @@
+body,
+html,
+#root {
+  height: 100%;
+  background-color: rgb(66, 125, 75);
+}
+
+html {
+  font-size: 18px;
+}
+
+h1 {
+  padding: .77rem 0;
+  text-align: center;
+  font-family: 'Rubik Distressed', sans-serif;
+  font-size: 1.88rem;
+  color: rgb(66, 125, 75);
+  background-color: rgb(17, 17, 17);
+}
+
+h1 .highlight {
+  color:rgb(175, 184, 176);
+}
+
+h2 {
+  font-family: 'Rubik Distressed', sans-serif;
+  font-size: 1.55rem;
+}
+
+.App {
+  height: 100%;
+  background-color: rgb(50, 90, 56);
+  font-family: 'Rubik Distressed', sans-serif;
+  font-weight: 500;
+  color: #fff;
+}
+
+.App-playlist {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+@media only screen and (max-width: 1020px) {
+  .App-playlist {
+    align-items: center;
+    flex-direction: column;
+  }
+}
