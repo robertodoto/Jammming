@@ -57,9 +57,8 @@ function App () {
           {/* <!-- Add a SearchResults component --> */}
           <SearchResults userSearchResults={searchResults} />
           {/* <!-- Add a Playlist component --> */}
-          <Playlist playlistName={playlistName} playlistTracks={playlistTracks
-            
-          }/>
+          <Playlist playlistName={playlistName} playlistTracks={playlistTracks}/>
+          
         </div>
       </div>
     </div>
