@@ -50,7 +50,7 @@ function App () {
     if (!playlistTracks.some(t => t.id === track.id)) {
       setPlaylistTracks(prevTracks => [...prevTracks, track]);
     }
-  }  
+  }   
 
   function removeTrack(track) {
     const existingTrack = playlistTracks.filter((t) => t.id !== track.id);
@@ -63,6 +63,10 @@ function App () {
 
   function savePlaylist() {
     const trackURIs = playlistTracks.map((t) => t.uri);
+    Spotify.savePlaylist(playlistName, trackURIs).then(() => {
+      setPlaylistName("New Playlist")
+      setPlaylistTracks([])
+    })
   }
 
   function search(term) {
