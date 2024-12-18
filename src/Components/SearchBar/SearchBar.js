@@ -8,8 +8,8 @@ function SearchBar (props) {
     props.onSearch(term);
   }
 
-function handleTermChange(target) {
-  setTerm(target.value);
+function handleTermChange(event) {
+  setTerm(event.target.value);
 }
 
     return (

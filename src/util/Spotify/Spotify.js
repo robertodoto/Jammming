@@ -1,6 +1,6 @@
 let accessToken;
 const clientID = "26eed97b27fa43ecbda391b3b6fb342a";
-const redirectUrl = "http://localhost:3000";
+const redirectUrl = "http://localhost:3001";
 
 const Spotify = {
     getAccessToken() {
@@ -11,7 +11,7 @@ const Spotify = {
         if (tokenInURL && expiryTime) {
         // setting access token and expiry time variables    
             accessToken = tokenInURL[1];
-            const expiresIn = Number(expiryTime(1));
+            const expiresIn = Number(expiryTime[1]);
 
         //  setting the access token to expire at the value for expiration time
             window.setTimeout(() => (accessToken = ""), expiresIn * 1000);
@@ -29,8 +29,9 @@ const Spotify = {
         accessToken = Spotify.getAccessToken();
         return fetch(`https://api.spotify.com/v1/search?type=track&q=${term}`, {
             method: 'GET',
-            headers: {Authorization: `bearer ${accessToken}`}
+            headers: {Authorization: `Bearer ${accessToken}`}
         })
+        .catch(error => console.error("Fetch error: ", error))
         .then(response => response.json())
         .then(jsonResponse => {
             if (!jsonResponse) {

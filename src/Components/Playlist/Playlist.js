@@ -3,8 +3,8 @@ import styles from './Playlist.module.css';
 import Tracklist from "../TrackList/Tracklist";
 
 function Playlist(props) {
-  function handleNameChange(target) {
-    props.onNameChange(target.value);
+  function handleNameChange(event) {
+    props.onNameChange(event.target.value);
   }
 
   return (
