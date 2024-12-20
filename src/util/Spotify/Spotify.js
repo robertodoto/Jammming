@@ -2,7 +2,7 @@ import { use } from "react";
 
 let accessToken;
 const clientID = "26eed97b27fa43ecbda391b3b6fb342a";
-const redirectUrl = "http://localhost:3001";
+const redirectUrl = "http://jammmingrobbe.surge.sh";
 
 const Spotify = {
     getAccessToken() {
@@ -72,7 +72,7 @@ const Spotify = {
         .then((jsonResponse) =>{
             userId = jsonResponse.id;
             console.log("User ID:", userId);
-            
+
             let playlistId;
             return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
                 headers: header,
