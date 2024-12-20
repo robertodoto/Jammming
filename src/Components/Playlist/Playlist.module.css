@@ -4,10 +4,12 @@
     align-items: center;
     overflow-y: scroll;
     width: 37%;
+    height: 80%;
     max-height: 950px;
     padding: 2.27rem 1.16rem;
     background-color: rgba(17, 17, 17, 0.7);
     box-shadow: 0 4px 2px 2px #000000;
+    border-radius: 0.5rem;
 }
 
 .Playlist input {
@@ -37,7 +39,7 @@
 }
 
 .Playlist-save:hover {
-    background-color: rgba(108, 65, 233, .7);
+    background-color: rgba(210, 91, 11, 0.7);
 }
 
 ::-webkit-scrollbar {
