@@ -33,32 +33,46 @@ const Spotify = {
             method: 'GET',
             headers: {Authorization: `Bearer ${accessToken}`}
         })
-        .catch(error => console.error("Fetch error: ", error))
-        .then(response => response.json())
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Failed to fetch search results');
+            }
+            return response.json();
+        })
         .then(jsonResponse => {
             if (!jsonResponse) {
-                console.error("Response error");
+                return []
             }
 
-            return jsonResponse.tracks.items.map(t => ({
-                id: t.id,
-                name: t.name,
-                artist: t.artists[0].name,
-                album: t.album.name,
-                uri: t.uri
+            return jsonResponse.tracks.items.map(track => ({
+                id: track.id,
+                name: track.name,
+                artist: track.artists[0].name,
+                album: track.album.name,
+                uri: track.uri
             }))
         })
+        .catch(error => {
+            console.error('Error searching track', error);
+            return [];
+        });
     }, 
 
     savePlaylist(name, trackURIs) {
-        if (!name || !trackURIs) return;
+        if (!name || !trackURIs.length) {
+            console.error("Playlist name or track URIs missing.");
+            return Promise.reject("Invalid playlist name or Track URIs.");
+        }
+
         const aToken = Spotify.getAccessToken();
-        const header = {Authorization: `Bearer ${aToken}`};
+        const header = {Authorization: `Bearer ${aToken}`, 'Content-Type': 'application/json' };
         let userId;
         return fetch(`https://api.spotify.com/v1/me`, {headers: header})
         .then(response => response.json())
         .then((jsonResponse) =>{
             userId = jsonResponse.id;
+            console.log("User ID:", userId);
+            
             let playlistId;
             return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
                 headers: header,

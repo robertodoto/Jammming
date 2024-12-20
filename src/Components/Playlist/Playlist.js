@@ -4,7 +4,7 @@ import Tracklist from "../TrackList/Tracklist";
 
 function Playlist(props) {
   function handleNameChange(event) {
-    props.onNameChange(event.target.value);
+    props.updatePlaylistName(event.target.value);
   }
 
   return (
@@ -14,7 +14,6 @@ function Playlist(props) {
       userSearchResults={props.playlistTracks}
       onRemove={props.onRemove}
       isRemoval={false}
-      onNameChange={props.updatePlaylistName}
       />
       <button className={styles['Playlist-save']} onClick={props.onSave}>
         Save to Spotify
